@@ -1,7 +1,8 @@
 # FinalProject---MongoDB
 Mongo DB - Final project 47/2
 
-After Cloning the repository enter:
+After Cloning the repository:
+
 1. Open a command prompt or terminal on the target computer.
 
 2. Navigate to the directory where the project's .csproj file is located. This file contains information about the project and its dependencies.
