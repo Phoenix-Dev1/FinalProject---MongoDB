@@ -173,7 +173,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model1.cs" />
+    <Compile Include="Models\Example.cs" />
+    <Compile Include="Models\Guests.cs" />
+    <Compile Include="Models\RoomManagement.cs" />
+    <Compile Include="Models\RoomStatus.cs" />
+    <Compile Include="Models\RoomType.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
