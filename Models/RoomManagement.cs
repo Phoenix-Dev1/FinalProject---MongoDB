@@ -60,7 +60,7 @@ namespace FinalProject.Models
                 "\nRoom Number: " + this.RoomNumber.ToString() +
                 "\nRoom Type: " + this.RoomType.ToString() +
                 "\nRoom Status: " + this.RoomStatus.ToString() +
-                "\n:Room Price " + this.RoomPrice.ToString();
+                "\nRoom Price: " + this.RoomPrice.ToString();
             return str;
         }
 
