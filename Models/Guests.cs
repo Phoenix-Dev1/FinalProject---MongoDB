@@ -46,6 +46,10 @@ namespace FinalProject.Models
         [BsonElement("persons"), BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
         public int Persons { get; set; }
 
+        //represent how many guests are staying in the room
+        [BsonElement("number_of_rooms"), BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
+        public int NumberOfRooms { get; set; }
+
         //represent the Guests's check in date
         [BsonElement("check_in_date"), BsonRepresentation(MongoDB.Bson.BsonType.String)]
         public string CheckInDate { get; set; }
@@ -56,7 +60,7 @@ namespace FinalProject.Models
 
 
 
-
+        /* Not used currently
         //CTOR
         public Guests(int guestNumber, string firstName, string lastName, string phoneNumber, int guestRoomType, 
             int guestRoomNumber, int persons, string checkInDate, string checkOutDate)
@@ -73,13 +77,17 @@ namespace FinalProject.Models
 
         }
 
+        */
+
         // User screen constructor
-        public Guests(int guestNumber, string firstName, string lastName, string phoneNumber, int persons, string checkInDate, string checkOutDate) {
+        public Guests(int guestNumber, string firstName, string lastName, string phoneNumber,int numberOfRooms, int persons, string checkInDate, string checkOutDate) {
+
             this.GuestNumber = guestNumber;
             this.FirstName = firstName;
             this.LastName = lastName;
             this.PhoneNumber = phoneNumber;
             this.Persons = persons;
+            this.NumberOfRooms = numberOfRooms;
             this.CheckInDate = checkInDate;
             this.CheckOutDate = checkOutDate;
         }

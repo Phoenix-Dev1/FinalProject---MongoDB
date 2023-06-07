@@ -50,6 +50,7 @@ namespace FinalProject
                 roomsManagementCollection = db.GetCollection<RoomManagement>("Rooms");
                 GuestsCollection = db.GetCollection<Guests>("Guests");
 
+
                 // When the form is loaded - we would like to get the list of all the rooms
                 LoadRoomsUponScreen();
                 LoadGuestsUponScreen();
@@ -86,8 +87,6 @@ namespace FinalProject
             comboBox_Filter_By_Status.SelectedItem = null;
             textBox_Filert_By_Price.Clear();
 
-
-
             dataGridView_rooms.DataSource = results;
         }
 
@@ -103,13 +102,13 @@ namespace FinalProject
                     g.FirstName,
                     g.PhoneNumber,
                     g.Persons,
+                    g.NumberOfRooms,
                     g.CheckInDate,
                     g.CheckOutDate
                 })
                 .ToList();
 
             // Clear the text box values
-            textBox_guest_number.Clear();
             textBox_first_name.Clear();
             textBox_last_name.Clear();
             textBox_phone.Clear();
@@ -151,17 +150,16 @@ namespace FinalProject
                    MessageBoxButtons.OK,
                    MessageBoxIcon.Error);
             }
-
-            textBox_Roon_No.Clear();
+            comboBox_Room_No.SelectedItem = null;
             comboBox_Room_Floors.SelectedItem = null;
             comboBox_Room_Type.SelectedItem = null;
             comboBox_Room_Status.SelectedItem = null;
             textBox_Room_Price.Clear();
         }
 
-
+        
         // Function to Insert a new guest to the system
-        private void btn_refresh_guests_table_Click(object sender, EventArgs e)
+        private void btn_insert_guests_table_Click(object sender, EventArgs e)
         {
             // To Do - Stage 1: Get the information from the screen
             FinalProject.Models.Guests guest = GetGuestDetailsFromScreen();
@@ -169,13 +167,21 @@ namespace FinalProject
             // To Do - Stage2: Insert the data into the Collection(Into the MongoDB)
             try
             {
-                GuestsCollection.InsertOne(guest);
-                MessageBox.Show("The Following product was inserted:\n" + guest.ToString(),
-                    "Product was inserted",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-                // If the insert succeeded - refresh the screen with the new information
-                LoadGuestsUponScreen();
+                if (phoneNumberCheck())
+                {
+                    GuestsCollection.InsertOne(guest);
+                    MessageBox.Show("The Following Guest was inserted:\n" + guest.ToString(),
+                        "Guest was inserted",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                    // If the insert succeeded - refresh the screen with the new information
+                    LoadGuestsUponScreen();
+                }
+                else
+                    MessageBox.Show("Youre Phone number is incorrect , Please try again\n",
+                "Siesta",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
             }
 
             catch (Exception ex)
@@ -186,22 +192,25 @@ namespace FinalProject
                    MessageBoxIcon.Error);
             }
 
-            textBox_Roon_No.Clear();
+            comboBox_Room_No.SelectedItem = null;
             comboBox_Room_Floors.SelectedItem = null;
             comboBox_Room_Type.SelectedItem = null;
             comboBox_Room_Status.SelectedItem = null;
             textBox_Room_Price.Clear();
+
         }
 
 
         // Function to get room details from screen
         private RoomManagement GetRoomDetailsFromScreen()
         {
-            int roomNo = Convert.ToInt32(textBox_Roon_No.Text);
+            int roomNo = Convert.ToInt32(comboBox_Room_No.SelectedItem);
             int roomFloor = Convert.ToInt32(comboBox_Room_Floors.SelectedItem);
             int roomType = Convert.ToInt32(comboBox_Room_Type.SelectedItem);
             int roomStatus = Convert.ToInt32(comboBox_Room_Status.SelectedItem);
             double roomPrice = Convert.ToDouble(textBox_Room_Price.Text);
+
+            roomNo = roomFloor * 100 + roomNo;
 
             RoomManagement room = new RoomManagement( roomFloor,  roomNo,  roomType,  roomStatus,  roomPrice);
 
@@ -211,15 +220,19 @@ namespace FinalProject
         // Function to get guest details from screen
         private Guests GetGuestDetailsFromScreen()
         {
-            int guestNo = Convert.ToInt32(textBox_guest_number.Text);
+            // Get the maximum guest number from Guests collection
+            int maxGuestNumber = GuestsCollection.Find(_ => true).SortByDescending(g => g.GuestNumber).Limit(1).FirstOrDefault()?.GuestNumber ?? 0;
+
+            int guestNumber = maxGuestNumber + 1;
             string firstName = textBox_first_name.Text;
             string lastName = textBox_last_name.Text;
             string phone = textBox_phone.Text;
             int persons = Convert.ToInt32(textBox_persons.Text);
+            int numberOfRooms = Convert.ToInt32(textBox_number_of_rooms.Text);
             string checkInDate = dateTimePicker_check_in.Value.ToString("dd-MM-yyyy");
             string checkOutDate = dateTimePicker_check_out.Value.ToString("dd-MM-yyyy");
 
-            Guests guest = new Guests(guestNo, firstName, lastName, phone, persons, checkInDate, checkOutDate);
+            Guests guest = new Guests(guestNumber, firstName, lastName, phone, numberOfRooms, persons, checkInDate, checkOutDate);
 
             return guest;
         }
@@ -311,14 +324,14 @@ namespace FinalProject
             // Gets a table
             GUForm guForm = new GUForm(GuestsCollection); // guestsCollection
 
-
             guForm.textBox_GU_Guest_No.Text = dataGridView_guests.CurrentRow.Cells[0].Value.ToString();
             guForm.textBox_GU_First_Name.Text = dataGridView_guests.CurrentRow.Cells[1].Value.ToString();
             guForm.textBox_GU_Last_Name.Text = dataGridView_guests.CurrentRow.Cells[2].Value.ToString();
             guForm.textBox_GU_Phone.Text = dataGridView_guests.CurrentRow.Cells[3].Value.ToString();
             guForm.textBox_GU_Persons.Text = dataGridView_guests.CurrentRow.Cells[4].Value.ToString();
-            guForm.dateTimePicker_GU_CheckIn.Text = dataGridView_guests.CurrentRow.Cells[5].Value.ToString();
-            guForm.dateTimePicker_GU_CheckOut.Text = dataGridView_guests.CurrentRow.Cells[6].Value.ToString();
+            guForm.textBox_GU_number_of_rooms.Text = dataGridView_guests.CurrentRow.Cells[5].Value.ToString();
+            guForm.dateTimePicker_GU_CheckIn.Text = dataGridView_guests.CurrentRow.Cells[6].Value.ToString();
+            guForm.dateTimePicker_GU_CheckOut.Text = dataGridView_guests.CurrentRow.Cells[7].Value.ToString();
 
             // Show the dialog after the fields have been filled
             guForm.ShowDialog(this);
@@ -347,5 +360,18 @@ namespace FinalProject
             // To Do - Refresh the screen after we are coming back from the delete/update screen
             LoadRoomsUponScreen();
         }
+
+
+        // Checkings
+        public bool phoneNumberCheck()
+        {
+            string phoneNumber = textBox_phone.Text;
+
+            if (phoneNumber.Length != 10)
+                return false;
+            return true;
+        }
+
+
     }
 }

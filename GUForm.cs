@@ -70,8 +70,9 @@ namespace FinalProject
             string lastName = textBox_GU_Last_Name.Text;
             string phone = textBox_GU_Phone.Text;
             int persons = Convert.ToInt32(textBox_GU_Persons.Text);
-            string checkIn = dateTimePicker_GU_CheckIn.Text;
-            string checkOut = dateTimePicker_GU_CheckOut.Text;
+            int numberOfRooms = Convert.ToInt32(textBox_GU_number_of_rooms);
+            string checkIn = dateTimePicker_GU_CheckIn.Value.ToString("dd-MM-yyyy");
+            string checkOut = dateTimePicker_GU_CheckOut.Value.ToString("dd-MM-yyyy");
 
             // Create a filter to find the guest with the given ID
             FilterDefinition<Guests> filter = Builders<Guests>.Filter.Eq(guest => guest.GuestNumber, guestNo);
@@ -84,6 +85,7 @@ namespace FinalProject
                 .Set(guest => guest.LastName, lastName)
                 .Set(guest => guest.PhoneNumber, phone)
                 .Set(guest => guest.Persons, persons)
+                .Set(guest => guest.NumberOfRooms, numberOfRooms)
                 .Set(guest => guest.CheckInDate, checkIn)
                 .Set(guest => guest.CheckOutDate, checkOut); 
 
