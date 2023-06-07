@@ -206,7 +206,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(12, 115);
+            this.label7.Location = new System.Drawing.Point(6, 109);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(47, 13);
             this.label7.TabIndex = 16;
@@ -216,7 +216,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(12, 134);
+            this.label6.Location = new System.Drawing.Point(6, 134);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(56, 13);
             this.label6.TabIndex = 17;
@@ -276,6 +276,7 @@
             // 
             // comboBox_Room_Floors
             // 
+            this.comboBox_Room_Floors.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Room_Floors.FormattingEnabled = true;
             this.comboBox_Room_Floors.Items.AddRange(new object[] {
             "1",
@@ -292,7 +293,7 @@
             // 
             // btn_Insert_Room
             // 
-            this.btn_Insert_Room.Location = new System.Drawing.Point(252, 85);
+            this.btn_Insert_Room.Location = new System.Drawing.Point(252, 78);
             this.btn_Insert_Room.Name = "btn_Insert_Room";
             this.btn_Insert_Room.Size = new System.Drawing.Size(120, 27);
             this.btn_Insert_Room.TabIndex = 10;
@@ -309,6 +310,7 @@
             // 
             // comboBox_Room_Status
             // 
+            this.comboBox_Room_Status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Room_Status.FormattingEnabled = true;
             this.comboBox_Room_Status.Items.AddRange(new object[] {
             "1",
@@ -324,6 +326,7 @@
             // 
             // comboBox_Room_Type
             // 
+            this.comboBox_Room_Type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Room_Type.FormattingEnabled = true;
             this.comboBox_Room_Type.Items.AddRange(new object[] {
             "1",
@@ -544,7 +547,7 @@
             // 
             // textBox_phone
             // 
-            this.textBox_phone.Location = new System.Drawing.Point(97, 115);
+            this.textBox_phone.Location = new System.Drawing.Point(97, 106);
             this.textBox_phone.Name = "textBox_phone";
             this.textBox_phone.Size = new System.Drawing.Size(120, 20);
             this.textBox_phone.TabIndex = 31;
