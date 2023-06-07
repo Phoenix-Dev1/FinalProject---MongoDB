@@ -317,6 +317,14 @@ namespace FinalProject
             LoadRoomsUponScreen();
         }
 
+        private void btn_Refresh_Rooms_Click(object sender, EventArgs e)
+        {
+            LoadRoomsUponScreen();
+        }
 
+        private void btn_Refresh_Guests_Click_Click(object sender, EventArgs e)
+        {
+            LoadGuestsUponScreen();
+        }
     }
 }

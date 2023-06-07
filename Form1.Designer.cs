@@ -72,6 +72,8 @@
             this.btn_Filter_By_Floor = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.btn_Refresh_Rooms = new System.Windows.Forms.Button();
+            this.btn_Refresh_Guests_Click = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -107,6 +109,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btn_Refresh_Guests_Click);
             this.groupBox3.Controls.Add(this.dateTimePicker_check_out);
             this.groupBox3.Controls.Add(this.dateTimePicker_check_in);
             this.groupBox3.Controls.Add(this.textBox_phone);
@@ -245,7 +248,7 @@
             // 
             // btn_refresh_guests_table
             // 
-            this.btn_refresh_guests_table.Location = new System.Drawing.Point(258, 101);
+            this.btn_refresh_guests_table.Location = new System.Drawing.Point(258, 99);
             this.btn_refresh_guests_table.Name = "btn_refresh_guests_table";
             this.btn_refresh_guests_table.Size = new System.Drawing.Size(120, 27);
             this.btn_refresh_guests_table.TabIndex = 22;
@@ -269,6 +272,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btn_Refresh_Rooms);
             this.groupBox1.Controls.Add(this.dataGridView_rooms);
             this.groupBox1.Controls.Add(this.comboBox_Room_Floors);
             this.groupBox1.Controls.Add(this.btn_Insert_Room);
@@ -567,6 +571,26 @@
             this.dataGridView.TabIndex = 0;
             this.dataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellDoubleClick);
             // 
+            // btn_Refresh_Rooms
+            // 
+            this.btn_Refresh_Rooms.Location = new System.Drawing.Point(252, 115);
+            this.btn_Refresh_Rooms.Name = "btn_Refresh_Rooms";
+            this.btn_Refresh_Rooms.Size = new System.Drawing.Size(120, 27);
+            this.btn_Refresh_Rooms.TabIndex = 13;
+            this.btn_Refresh_Rooms.Text = "Refresh";
+            this.btn_Refresh_Rooms.UseVisualStyleBackColor = true;
+            this.btn_Refresh_Rooms.Click += new System.EventHandler(this.btn_Refresh_Rooms_Click);
+            // 
+            // btn_Refresh_Guests_Click
+            // 
+            this.btn_Refresh_Guests_Click.Location = new System.Drawing.Point(258, 134);
+            this.btn_Refresh_Guests_Click.Name = "btn_Refresh_Guests_Click";
+            this.btn_Refresh_Guests_Click.Size = new System.Drawing.Size(120, 27);
+            this.btn_Refresh_Guests_Click.TabIndex = 34;
+            this.btn_Refresh_Guests_Click.Text = "Refresh";
+            this.btn_Refresh_Guests_Click.UseVisualStyleBackColor = true;
+            this.btn_Refresh_Guests_Click.Click += new System.EventHandler(this.btn_Refresh_Guests_Click_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -639,6 +663,8 @@
         private System.Windows.Forms.TextBox textBox_phone;
         private System.Windows.Forms.DateTimePicker dateTimePicker_check_out;
         private System.Windows.Forms.DateTimePicker dateTimePicker_check_in;
+        private System.Windows.Forms.Button btn_Refresh_Guests_Click;
+        private System.Windows.Forms.Button btn_Refresh_Rooms;
     }
 }
 
