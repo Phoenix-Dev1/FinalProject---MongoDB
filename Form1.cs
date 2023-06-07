@@ -167,7 +167,7 @@ namespace FinalProject
             // To Do - Stage2: Insert the data into the Collection(Into the MongoDB)
             try
             {
-                if (phoneNumberCheck())
+                if (phoneNumberCheck(guest.PhoneNumber) && (CheckFirstAndLastNameValidity(guest.FirstName, guest.LastName)))
                 {
                     GuestsCollection.InsertOne(guest);
                     MessageBox.Show("The Following Guest was inserted:\n" + guest.ToString(),
@@ -178,10 +178,20 @@ namespace FinalProject
                     LoadGuestsUponScreen();
                 }
                 else
-                    MessageBox.Show("Youre Phone number is incorrect , Please try again\n",
+                {
+                    if(!phoneNumberCheck(guest.PhoneNumber))
+                    MessageBox.Show("Phone number is incorrect , Please try again\n",
                 "Siesta",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Error);
+
+                    if (!CheckFirstAndLastNameValidity(guest.FirstName, guest.LastName))
+                        MessageBox.Show("Guest name is incorrect , Please try again\n",
+                    "Siesta",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                }
+
             }
 
             catch (Exception ex)
@@ -192,12 +202,11 @@ namespace FinalProject
                    MessageBoxIcon.Error);
             }
 
-            comboBox_Room_No.SelectedItem = null;
-            comboBox_Room_Floors.SelectedItem = null;
-            comboBox_Room_Type.SelectedItem = null;
-            comboBox_Room_Status.SelectedItem = null;
-            textBox_Room_Price.Clear();
-
+            textBox_first_name.Clear();
+            textBox_last_name.Clear();
+            textBox_phone.Clear();
+            textBox_persons.Clear();
+            textBox_number_of_rooms.Clear();
         }
 
 
@@ -319,6 +328,7 @@ namespace FinalProject
             LoadGuestsUponScreen();
         }
 
+        // Cell double click - open new Winform
         private void dataGridView_guests_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             // Gets a table
@@ -363,14 +373,43 @@ namespace FinalProject
 
 
         // Checkings
-        public bool phoneNumberCheck()
+        public bool phoneNumberCheck(string phoneNumber)
         {
-            string phoneNumber = textBox_phone.Text;
-
             if (phoneNumber.Length != 10)
                 return false;
+
+            foreach (char c in phoneNumber)
+            {
+                if (!char.IsDigit(c))
+                    return false;
+            }
+
             return true;
         }
+
+        public bool CheckFirstAndLastNameValidity(string firstName, string lastName)
+        {
+            // Check if the first name or last name is empty
+            if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName))
+                return false;
+
+            // Check if the first name contains only valid characters (a-z/A-Z)
+            foreach (char c in firstName)
+            {
+                if (!char.IsLetter(c))
+                    return false;
+            }
+
+            // Check if the last name contains only valid characters (a-z/A-Z)
+            foreach (char c in lastName)
+            {
+                if (!char.IsLetter(c))
+                    return false;
+            }
+
+            return true;
+        }
+
 
 
     }

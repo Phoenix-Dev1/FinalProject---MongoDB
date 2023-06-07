@@ -62,9 +62,8 @@ namespace FinalProject.Models
         public override string ToString()
         {
             string str = "";
-
-            str += "Room floor: " + this.RoomFloor.ToString() +
-                "\nRoom Number: " + this.RoomNumber.ToString() +
+            str += "Room Number: " + this.RoomNumber.ToString() +
+                "\nRoom floor: " + this.RoomFloor.ToString() +
                 "\nRoom Type: " + this.RoomType.ToString() +
                 "\nRoom Status: " + this.RoomStatus.ToString() +
                 "\nRoom Price: " + this.RoomPrice.ToString();
