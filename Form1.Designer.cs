@@ -31,6 +31,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btn_Refresh_Guests_Click = new System.Windows.Forms.Button();
             this.dateTimePicker_check_out = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker_check_in = new System.Windows.Forms.DateTimePicker();
             this.textBox_phone = new System.Windows.Forms.TextBox();
@@ -48,6 +49,7 @@
             this.textBox_guest_number = new System.Windows.Forms.TextBox();
             this.textBox_persons = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_Refresh_Rooms = new System.Windows.Forms.Button();
             this.dataGridView_rooms = new System.Windows.Forms.DataGridView();
             this.comboBox_Room_Floors = new System.Windows.Forms.ComboBox();
             this.btn_Insert_Room = new System.Windows.Forms.Button();
@@ -72,8 +74,6 @@
             this.btn_Filter_By_Floor = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.btn_Refresh_Rooms = new System.Windows.Forms.Button();
-            this.btn_Refresh_Guests_Click = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -128,21 +128,31 @@
             this.groupBox3.Controls.Add(this.textBox_persons);
             this.groupBox3.Location = new System.Drawing.Point(56, 324);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(767, 339);
+            this.groupBox3.Size = new System.Drawing.Size(755, 299);
             this.groupBox3.TabIndex = 13;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Guests";
             // 
+            // btn_Refresh_Guests_Click
+            // 
+            this.btn_Refresh_Guests_Click.Location = new System.Drawing.Point(618, 56);
+            this.btn_Refresh_Guests_Click.Name = "btn_Refresh_Guests_Click";
+            this.btn_Refresh_Guests_Click.Size = new System.Drawing.Size(120, 27);
+            this.btn_Refresh_Guests_Click.TabIndex = 34;
+            this.btn_Refresh_Guests_Click.Text = "Refresh";
+            this.btn_Refresh_Guests_Click.UseVisualStyleBackColor = true;
+            this.btn_Refresh_Guests_Click.Click += new System.EventHandler(this.btn_Refresh_Guests_Click_Click);
+            // 
             // dateTimePicker_check_out
             // 
-            this.dateTimePicker_check_out.Location = new System.Drawing.Point(97, 191);
+            this.dateTimePicker_check_out.Location = new System.Drawing.Point(340, 49);
             this.dateTimePicker_check_out.Name = "dateTimePicker_check_out";
             this.dateTimePicker_check_out.Size = new System.Drawing.Size(217, 20);
             this.dateTimePicker_check_out.TabIndex = 33;
             // 
             // dateTimePicker_check_in
             // 
-            this.dateTimePicker_check_in.Location = new System.Drawing.Point(97, 165);
+            this.dateTimePicker_check_in.Location = new System.Drawing.Point(340, 23);
             this.dateTimePicker_check_in.Name = "dateTimePicker_check_in";
             this.dateTimePicker_check_in.Size = new System.Drawing.Size(217, 20);
             this.dateTimePicker_check_in.TabIndex = 32;
@@ -171,10 +181,11 @@
             // dataGridView_guests
             // 
             this.dataGridView_guests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_guests.Location = new System.Drawing.Point(6, 214);
+            this.dataGridView_guests.Location = new System.Drawing.Point(9, 160);
             this.dataGridView_guests.Name = "dataGridView_guests";
             this.dataGridView_guests.Size = new System.Drawing.Size(743, 125);
             this.dataGridView_guests.TabIndex = 24;
+            this.dataGridView_guests.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_guests_CellDoubleClick);
             // 
             // label10
             // 
@@ -190,7 +201,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(6, 191);
+            this.label11.Location = new System.Drawing.Point(249, 49);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(71, 13);
             this.label11.TabIndex = 26;
@@ -210,7 +221,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(6, 167);
+            this.label12.Location = new System.Drawing.Point(249, 25);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(62, 13);
             this.label12.TabIndex = 25;
@@ -248,7 +259,7 @@
             // 
             // btn_refresh_guests_table
             // 
-            this.btn_refresh_guests_table.Location = new System.Drawing.Point(258, 99);
+            this.btn_refresh_guests_table.Location = new System.Drawing.Point(618, 23);
             this.btn_refresh_guests_table.Name = "btn_refresh_guests_table";
             this.btn_refresh_guests_table.Size = new System.Drawing.Size(120, 27);
             this.btn_refresh_guests_table.TabIndex = 22;
@@ -287,18 +298,29 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(56, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(767, 312);
+            this.groupBox1.Size = new System.Drawing.Size(755, 312);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Rooms";
+            // 
+            // btn_Refresh_Rooms
+            // 
+            this.btn_Refresh_Rooms.Location = new System.Drawing.Point(252, 115);
+            this.btn_Refresh_Rooms.Name = "btn_Refresh_Rooms";
+            this.btn_Refresh_Rooms.Size = new System.Drawing.Size(120, 27);
+            this.btn_Refresh_Rooms.TabIndex = 13;
+            this.btn_Refresh_Rooms.Text = "Refresh";
+            this.btn_Refresh_Rooms.UseVisualStyleBackColor = true;
+            this.btn_Refresh_Rooms.Click += new System.EventHandler(this.btn_Refresh_Rooms_Click);
             // 
             // dataGridView_rooms
             // 
             this.dataGridView_rooms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_rooms.Location = new System.Drawing.Point(9, 165);
             this.dataGridView_rooms.Name = "dataGridView_rooms";
-            this.dataGridView_rooms.Size = new System.Drawing.Size(749, 125);
+            this.dataGridView_rooms.Size = new System.Drawing.Size(740, 125);
             this.dataGridView_rooms.TabIndex = 12;
+            this.dataGridView_rooms.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_rooms_CellDoubleClick);
             // 
             // comboBox_Room_Floors
             // 
@@ -569,27 +591,6 @@
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.Size = new System.Drawing.Size(542, 347);
             this.dataGridView.TabIndex = 0;
-            this.dataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellDoubleClick);
-            // 
-            // btn_Refresh_Rooms
-            // 
-            this.btn_Refresh_Rooms.Location = new System.Drawing.Point(252, 115);
-            this.btn_Refresh_Rooms.Name = "btn_Refresh_Rooms";
-            this.btn_Refresh_Rooms.Size = new System.Drawing.Size(120, 27);
-            this.btn_Refresh_Rooms.TabIndex = 13;
-            this.btn_Refresh_Rooms.Text = "Refresh";
-            this.btn_Refresh_Rooms.UseVisualStyleBackColor = true;
-            this.btn_Refresh_Rooms.Click += new System.EventHandler(this.btn_Refresh_Rooms_Click);
-            // 
-            // btn_Refresh_Guests_Click
-            // 
-            this.btn_Refresh_Guests_Click.Location = new System.Drawing.Point(258, 134);
-            this.btn_Refresh_Guests_Click.Name = "btn_Refresh_Guests_Click";
-            this.btn_Refresh_Guests_Click.Size = new System.Drawing.Size(120, 27);
-            this.btn_Refresh_Guests_Click.TabIndex = 34;
-            this.btn_Refresh_Guests_Click.Text = "Refresh";
-            this.btn_Refresh_Guests_Click.UseVisualStyleBackColor = true;
-            this.btn_Refresh_Guests_Click.Click += new System.EventHandler(this.btn_Refresh_Guests_Click_Click);
             // 
             // Form1
             // 

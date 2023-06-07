@@ -216,8 +216,8 @@ namespace FinalProject
             string lastName = textBox_last_name.Text;
             string phone = textBox_phone.Text;
             int persons = Convert.ToInt32(textBox_persons.Text);
-            string checkInDate = dateTimePicker_check_in.Value.ToString("yyyy-MM-dd");
-            string checkOutDate = dateTimePicker_check_out.Value.ToString("yyyy-MM-dd");
+            string checkInDate = dateTimePicker_check_in.Value.ToString("dd-MM-yyyy");
+            string checkOutDate = dateTimePicker_check_out.Value.ToString("dd-MM-yyyy");
 
             Guests guest = new Guests(guestNo, firstName, lastName, phone, persons, checkInDate, checkOutDate);
 
@@ -296,27 +296,6 @@ namespace FinalProject
             textBox_Filert_By_Price.Clear();
         }
 
-        // Function for Cell double click window open
-        private void dataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // Gets a table
-            UDForm udForm = new UDForm(roomsManagementCollection); // roomsCollection
-
-
-            //udForm.textBox_UD_Mongo_Id.Text = dataGridView.CurrentRow.Cells[0].Value.ToString();
-            udForm.textBox_UD_Room_No.Text = dataGridView.CurrentRow.Cells[1].Value.ToString();
-            udForm.textBox_UD_Room_Floor.Text = dataGridView.CurrentRow.Cells[0].Value.ToString();
-            udForm.comboBox_UD_Room_Type.SelectedItem= dataGridView.CurrentRow.Cells[2].Value.ToString();
-            udForm.comboBox_UD_Room_Status.SelectedItem = dataGridView.CurrentRow.Cells[3].Value.ToString();
-            udForm.textBox_UD_Room_Price.Text = dataGridView.CurrentRow.Cells[4].Value.ToString();
-
-            // Show the dialog after the fields have been filled
-            udForm.ShowDialog(this);
-
-            // To Do - Refresh the screen after we are coming back from the delete/update screen
-            LoadRoomsUponScreen();
-        }
-
         private void btn_Refresh_Rooms_Click(object sender, EventArgs e)
         {
             LoadRoomsUponScreen();
@@ -325,6 +304,48 @@ namespace FinalProject
         private void btn_Refresh_Guests_Click_Click(object sender, EventArgs e)
         {
             LoadGuestsUponScreen();
+        }
+
+        private void dataGridView_guests_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Gets a table
+            GUForm guForm = new GUForm(GuestsCollection); // guestsCollection
+
+
+            guForm.textBox_GU_Guest_No.Text = dataGridView_guests.CurrentRow.Cells[0].Value.ToString();
+            guForm.textBox_GU_First_Name.Text = dataGridView_guests.CurrentRow.Cells[1].Value.ToString();
+            guForm.textBox_GU_Last_Name.Text = dataGridView_guests.CurrentRow.Cells[2].Value.ToString();
+            guForm.textBox_GU_Phone.Text = dataGridView_guests.CurrentRow.Cells[3].Value.ToString();
+            guForm.textBox_GU_Persons.Text = dataGridView_guests.CurrentRow.Cells[4].Value.ToString();
+            guForm.dateTimePicker_GU_CheckIn.Text = dataGridView_guests.CurrentRow.Cells[5].Value.ToString();
+            guForm.dateTimePicker_GU_CheckOut.Text = dataGridView_guests.CurrentRow.Cells[6].Value.ToString();
+
+            // Show the dialog after the fields have been filled
+            guForm.ShowDialog(this);
+
+            // To Do - Refresh the screen after we are coming back from the delete/update screen
+            LoadGuestsUponScreen();
+        }
+
+        // Function for Cell double click window open
+        private void dataGridView_rooms_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Gets a table
+            UDForm udForm = new UDForm(roomsManagementCollection); // roomsCollection
+
+
+            //udForm.textBox_UD_Mongo_Id.Text = dataGridView.CurrentRow.Cells[0].Value.ToString();
+            udForm.textBox_UD_Room_No.Text = dataGridView_rooms.CurrentRow.Cells[1].Value.ToString();
+            udForm.textBox_UD_Room_Floor.Text = dataGridView_rooms.CurrentRow.Cells[0].Value.ToString();
+            udForm.comboBox_UD_Room_Type.SelectedItem = dataGridView_rooms.CurrentRow.Cells[2].Value.ToString();
+            udForm.comboBox_UD_Room_Status.SelectedItem = dataGridView_rooms.CurrentRow.Cells[3].Value.ToString();
+            udForm.textBox_UD_Room_Price.Text = dataGridView_rooms.CurrentRow.Cells[4].Value.ToString();
+
+            // Show the dialog after the fields have been filled
+            udForm.ShowDialog(this);
+
+            // To Do - Refresh the screen after we are coming back from the delete/update screen
+            LoadRoomsUponScreen();
         }
     }
 }
