@@ -437,7 +437,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1032, 458);
+            this.tabPage2.Size = new System.Drawing.Size(884, 669);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Room Management";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -571,7 +571,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1232, 797);
+            this.ClientSize = new System.Drawing.Size(916, 722);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
