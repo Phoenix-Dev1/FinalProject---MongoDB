@@ -14,7 +14,7 @@ using System.Globalization;
 
 namespace FinalProject
 {
-    
+
     public partial class Form1 : Form
     {
         string connectionString = ConfigurationManager.ConnectionStrings["MyMongo"].ConnectionString;
@@ -157,7 +157,7 @@ namespace FinalProject
             textBox_Room_Price.Clear();
         }
 
-        
+
         // Function to Insert a new guest to the system
         private void btn_insert_guests_table_Click(object sender, EventArgs e)
         {
@@ -176,20 +176,33 @@ namespace FinalProject
                         MessageBoxIcon.Information);
                     // If the insert succeeded - refresh the screen with the new information
                     LoadGuestsUponScreen();
+
+                    textBox_first_name.Clear();
+                    textBox_last_name.Clear();
+                    textBox_phone.Clear();
+                    textBox_persons.Clear();
+                    textBox_number_of_rooms.Clear();
                 }
                 else
                 {
-                    if(!phoneNumberCheck(guest.PhoneNumber))
-                    MessageBox.Show("Phone number is incorrect , Please try again\n",
-                "Siesta",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
+                    if (!phoneNumberCheck(guest.PhoneNumber))
+                    {
+                        MessageBox.Show("Phone number is incorrect , Please try again\n",
+                    "Siesta",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                        textBox_phone.Clear();
+                    }
 
                     if (!CheckFirstAndLastNameValidity(guest.FirstName, guest.LastName))
+                    {
                         MessageBox.Show("Guest name is incorrect , Please try again\n",
                     "Siesta",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
+                        textBox_first_name.Clear();
+                        textBox_last_name.Clear();
+                    }
                 }
 
             }
@@ -202,11 +215,7 @@ namespace FinalProject
                    MessageBoxIcon.Error);
             }
 
-            textBox_first_name.Clear();
-            textBox_last_name.Clear();
-            textBox_phone.Clear();
-            textBox_persons.Clear();
-            textBox_number_of_rooms.Clear();
+
         }
 
 
@@ -221,7 +230,7 @@ namespace FinalProject
 
             roomNo = roomFloor * 100 + roomNo;
 
-            RoomManagement room = new RoomManagement( roomFloor,  roomNo,  roomType,  roomStatus,  roomPrice);
+            RoomManagement room = new RoomManagement(roomFloor, roomNo, roomType, roomStatus, roomPrice);
 
             return room;
         }
