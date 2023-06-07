@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FinalProject.Models;
+using System.Globalization;
 
 namespace FinalProject
 {
@@ -17,7 +18,9 @@ namespace FinalProject
     public partial class Form1 : Form
     {
         string connectionString = ConfigurationManager.ConnectionStrings["MyMongo"].ConnectionString;
-        IMongoCollection<RoomManagement> roomsManagementCollection;
+        private IMongoCollection<RoomManagement> roomsManagementCollection;
+        private IMongoCollection<Guests> GuestsCollection;
+
 
         public Form1()
         {
@@ -45,9 +48,11 @@ namespace FinalProject
                 // Get the Collection 
                 // the collection is called "Rooms" - in the first time it will create it
                 roomsManagementCollection = db.GetCollection<RoomManagement>("Rooms");
+                GuestsCollection = db.GetCollection<Guests>("Guests");
 
                 // When the form is loaded - we would like to get the list of all the rooms
                 LoadRoomsUponScreen();
+                LoadGuestsUponScreen();
 
             }
             catch (Exception ex)
@@ -83,7 +88,36 @@ namespace FinalProject
 
 
 
-            dataGridView.DataSource = results;
+            dataGridView_rooms.DataSource = results;
+        }
+
+        // Load all the guests upon the user's screen
+        private void LoadGuestsUponScreen()
+        {
+            // To hide _id by Mongo
+            var results = GuestsCollection.Find(_ => true)
+                .Project(g => new
+                {
+                    g.GuestNumber,
+                    g.LastName,
+                    g.FirstName,
+                    g.PhoneNumber,
+                    g.Persons,
+                    g.CheckInDate,
+                    g.CheckOutDate
+                })
+                .ToList();
+
+            // Clear the text box values
+            textBox_guest_number.Clear();
+            textBox_first_name.Clear();
+            textBox_last_name.Clear();
+            textBox_phone.Clear();
+            textBox_persons.Clear();
+            dateTimePicker_check_in.ResetText();
+            dateTimePicker_check_out.ResetText();
+
+            dataGridView_guests.DataSource = results;
         }
 
         // Refresh the Data grid
@@ -125,6 +159,41 @@ namespace FinalProject
             textBox_Room_Price.Clear();
         }
 
+
+        // Function to Insert a new guest to the system
+        private void btn_refresh_guests_table_Click(object sender, EventArgs e)
+        {
+            // To Do - Stage 1: Get the information from the screen
+            FinalProject.Models.Guests guest = GetGuestDetailsFromScreen();
+
+            // To Do - Stage2: Insert the data into the Collection(Into the MongoDB)
+            try
+            {
+                GuestsCollection.InsertOne(guest);
+                MessageBox.Show("The Following product was inserted:\n" + guest.ToString(),
+                    "Product was inserted",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                // If the insert succeeded - refresh the screen with the new information
+                LoadGuestsUponScreen();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("The following error occured:\n" + ex.Message,
+                   "Siesta",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+            }
+
+            textBox_Roon_No.Clear();
+            comboBox_Room_Floors.SelectedItem = null;
+            comboBox_Room_Type.SelectedItem = null;
+            comboBox_Room_Status.SelectedItem = null;
+            textBox_Room_Price.Clear();
+        }
+
+
         // Function to get room details from screen
         private RoomManagement GetRoomDetailsFromScreen()
         {
@@ -137,6 +206,22 @@ namespace FinalProject
             RoomManagement room = new RoomManagement( roomFloor,  roomNo,  roomType,  roomStatus,  roomPrice);
 
             return room;
+        }
+
+        // Function to get guest details from screen
+        private Guests GetGuestDetailsFromScreen()
+        {
+            int guestNo = Convert.ToInt32(textBox_guest_number.Text);
+            string firstName = textBox_first_name.Text;
+            string lastName = textBox_last_name.Text;
+            string phone = textBox_phone.Text;
+            int persons = Convert.ToInt32(textBox_persons.Text);
+            string checkInDate = dateTimePicker_check_in.Value.ToString("yyyy-MM-dd");
+            string checkOutDate = dateTimePicker_check_out.Value.ToString("yyyy-MM-dd");
+
+            Guests guest = new Guests(guestNo, firstName, lastName, phone, persons, checkInDate, checkOutDate);
+
+            return guest;
         }
 
         // Filter by floor
@@ -231,6 +316,7 @@ namespace FinalProject
             // To Do - Refresh the screen after we are coming back from the delete/update screen
             LoadRoomsUponScreen();
         }
+
 
     }
 }

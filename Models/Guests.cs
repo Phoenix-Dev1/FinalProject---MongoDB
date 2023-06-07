@@ -47,29 +47,41 @@ namespace FinalProject.Models
         public int Persons { get; set; }
 
         //represent the Guests's check in date
-        [BsonElement("check_in_date"), BsonRepresentation(MongoDB.Bson.BsonType.DateTime)]
-        public DateTime CheckInDate { get; set; }
+        [BsonElement("check_in_date"), BsonRepresentation(MongoDB.Bson.BsonType.String)]
+        public string CheckInDate { get; set; }
 
         //represent the Guests's check out date
-        [BsonElement("check_out_date"), BsonRepresentation(MongoDB.Bson.BsonType.DateTime)]
-        public DateTime CheckOutDate { get; set; }
+        [BsonElement("check_out_date"), BsonRepresentation(MongoDB.Bson.BsonType.String)]
+        public string CheckOutDate { get; set; }
 
 
 
 
         //CTOR
         public Guests(int guestNumber, string firstName, string lastName, string phoneNumber, int guestRoomType, 
-            int guestRoomNumber, int persons, DateTime checkInDate, DateTime checkOutDate)
+            int guestRoomNumber, int persons, string checkInDate, string checkOutDate)
         {
             this.GuestNumber = guestNumber;
             this.FirstName = firstName;
             this.LastName = lastName;
             this.PhoneNumber = phoneNumber;
+            this.GuestRoomType = guestRoomType;
             this.GuestRoomNumber = guestRoomNumber;
             this.Persons = persons;
             this.CheckInDate = checkInDate;
             this.CheckOutDate = checkOutDate;
 
+        }
+
+        // User screen constructor
+        public Guests(int guestNumber, string firstName, string lastName, string phoneNumber, int persons, string checkInDate, string checkOutDate) {
+            this.GuestNumber = guestNumber;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.PhoneNumber = phoneNumber;
+            this.Persons = persons;
+            this.CheckInDate = checkInDate;
+            this.CheckOutDate = checkOutDate;
         }
 
 

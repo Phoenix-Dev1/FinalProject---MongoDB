@@ -31,9 +31,12 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.dateTimePicker_check_out = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker_check_in = new System.Windows.Forms.DateTimePicker();
+            this.textBox_phone = new System.Windows.Forms.TextBox();
             this.textBox_last_name = new System.Windows.Forms.TextBox();
             this.textBox_first_name = new System.Windows.Forms.TextBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridView_guests = new System.Windows.Forms.DataGridView();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -41,11 +44,11 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_refresh_guests_table = new System.Windows.Forms.Button();
             this.textBox_guest_number = new System.Windows.Forms.TextBox();
             this.textBox_persons = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView_rooms = new System.Windows.Forms.DataGridView();
             this.comboBox_Room_Floors = new System.Windows.Forms.ComboBox();
             this.btn_Insert_Room = new System.Windows.Forms.Button();
             this.textBox_Room_Price = new System.Windows.Forms.TextBox();
@@ -69,15 +72,12 @@
             this.btn_Filter_By_Floor = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.textBox_phone = new System.Windows.Forms.TextBox();
-            this.dateTimePicker_check_in = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker_check_out = new System.Windows.Forms.DateTimePicker();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_guests)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_rooms)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -90,7 +90,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1040, 484);
+            this.tabControl1.Size = new System.Drawing.Size(892, 695);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -100,7 +100,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1032, 458);
+            this.tabPage1.Size = new System.Drawing.Size(884, 669);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Hotel Management";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -112,7 +112,7 @@
             this.groupBox3.Controls.Add(this.textBox_phone);
             this.groupBox3.Controls.Add(this.textBox_last_name);
             this.groupBox3.Controls.Add(this.textBox_first_name);
-            this.groupBox3.Controls.Add(this.dataGridView2);
+            this.groupBox3.Controls.Add(this.dataGridView_guests);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.label9);
@@ -120,15 +120,36 @@
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.button1);
+            this.groupBox3.Controls.Add(this.btn_refresh_guests_table);
             this.groupBox3.Controls.Add(this.textBox_guest_number);
             this.groupBox3.Controls.Add(this.textBox_persons);
-            this.groupBox3.Location = new System.Drawing.Point(0, 228);
+            this.groupBox3.Location = new System.Drawing.Point(56, 324);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(840, 261);
+            this.groupBox3.Size = new System.Drawing.Size(767, 339);
             this.groupBox3.TabIndex = 13;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Guests";
+            // 
+            // dateTimePicker_check_out
+            // 
+            this.dateTimePicker_check_out.Location = new System.Drawing.Point(97, 191);
+            this.dateTimePicker_check_out.Name = "dateTimePicker_check_out";
+            this.dateTimePicker_check_out.Size = new System.Drawing.Size(217, 20);
+            this.dateTimePicker_check_out.TabIndex = 33;
+            // 
+            // dateTimePicker_check_in
+            // 
+            this.dateTimePicker_check_in.Location = new System.Drawing.Point(97, 165);
+            this.dateTimePicker_check_in.Name = "dateTimePicker_check_in";
+            this.dateTimePicker_check_in.Size = new System.Drawing.Size(217, 20);
+            this.dateTimePicker_check_in.TabIndex = 32;
+            // 
+            // textBox_phone
+            // 
+            this.textBox_phone.Location = new System.Drawing.Point(97, 106);
+            this.textBox_phone.Name = "textBox_phone";
+            this.textBox_phone.Size = new System.Drawing.Size(120, 20);
+            this.textBox_phone.TabIndex = 31;
             // 
             // textBox_last_name
             // 
@@ -144,13 +165,13 @@
             this.textBox_first_name.Size = new System.Drawing.Size(120, 20);
             this.textBox_first_name.TabIndex = 29;
             // 
-            // dataGridView2
+            // dataGridView_guests
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(442, 23);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(368, 181);
-            this.dataGridView2.TabIndex = 24;
+            this.dataGridView_guests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_guests.Location = new System.Drawing.Point(6, 214);
+            this.dataGridView_guests.Name = "dataGridView_guests";
+            this.dataGridView_guests.Size = new System.Drawing.Size(743, 125);
+            this.dataGridView_guests.TabIndex = 24;
             // 
             // label10
             // 
@@ -166,7 +187,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(12, 191);
+            this.label11.Location = new System.Drawing.Point(6, 191);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(71, 13);
             this.label11.TabIndex = 26;
@@ -186,7 +207,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(12, 167);
+            this.label12.Location = new System.Drawing.Point(6, 167);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(62, 13);
             this.label12.TabIndex = 25;
@@ -222,14 +243,15 @@
             this.label6.TabIndex = 17;
             this.label6.Text = "Persons:";
             // 
-            // button1
+            // btn_refresh_guests_table
             // 
-            this.button1.Location = new System.Drawing.Point(258, 101);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 27);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "Insert";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_refresh_guests_table.Location = new System.Drawing.Point(258, 101);
+            this.btn_refresh_guests_table.Name = "btn_refresh_guests_table";
+            this.btn_refresh_guests_table.Size = new System.Drawing.Size(120, 27);
+            this.btn_refresh_guests_table.TabIndex = 22;
+            this.btn_refresh_guests_table.Text = "Insert";
+            this.btn_refresh_guests_table.UseVisualStyleBackColor = true;
+            this.btn_refresh_guests_table.Click += new System.EventHandler(this.btn_refresh_guests_table_Click);
             // 
             // textBox_guest_number
             // 
@@ -247,7 +269,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Controls.Add(this.dataGridView_rooms);
             this.groupBox1.Controls.Add(this.comboBox_Room_Floors);
             this.groupBox1.Controls.Add(this.btn_Insert_Room);
             this.groupBox1.Controls.Add(this.textBox_Room_Price);
@@ -259,20 +281,20 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Location = new System.Drawing.Point(56, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(863, 216);
+            this.groupBox1.Size = new System.Drawing.Size(767, 312);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Rooms";
             // 
-            // dataGridView1
+            // dataGridView_rooms
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(436, 11);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(368, 181);
-            this.dataGridView1.TabIndex = 12;
+            this.dataGridView_rooms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_rooms.Location = new System.Drawing.Point(9, 165);
+            this.dataGridView_rooms.Name = "dataGridView_rooms";
+            this.dataGridView_rooms.Size = new System.Drawing.Size(749, 125);
+            this.dataGridView_rooms.TabIndex = 12;
             // 
             // comboBox_Room_Floors
             // 
@@ -545,32 +567,11 @@
             this.dataGridView.TabIndex = 0;
             this.dataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellDoubleClick);
             // 
-            // textBox_phone
-            // 
-            this.textBox_phone.Location = new System.Drawing.Point(97, 106);
-            this.textBox_phone.Name = "textBox_phone";
-            this.textBox_phone.Size = new System.Drawing.Size(120, 20);
-            this.textBox_phone.TabIndex = 31;
-            // 
-            // dateTimePicker_check_in
-            // 
-            this.dateTimePicker_check_in.Location = new System.Drawing.Point(89, 167);
-            this.dateTimePicker_check_in.Name = "dateTimePicker_check_in";
-            this.dateTimePicker_check_in.Size = new System.Drawing.Size(217, 20);
-            this.dateTimePicker_check_in.TabIndex = 32;
-            // 
-            // dateTimePicker_check_out
-            // 
-            this.dateTimePicker_check_out.Location = new System.Drawing.Point(89, 191);
-            this.dateTimePicker_check_out.Name = "dateTimePicker_check_out";
-            this.dateTimePicker_check_out.Size = new System.Drawing.Size(217, 20);
-            this.dateTimePicker_check_out.TabIndex = 33;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(857, 494);
+            this.ClientSize = new System.Drawing.Size(1232, 797);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
@@ -580,10 +581,10 @@
             this.tabPage1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_guests)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_rooms)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -620,9 +621,9 @@
         private System.Windows.Forms.ComboBox comboBox_Room_Floors;
         private System.Windows.Forms.ComboBox comboBox_Filter_Room_Floor;
         private System.Windows.Forms.Button btn_refresh;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView_rooms;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dataGridView_guests;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label9;
@@ -630,7 +631,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_refresh_guests_table;
         private System.Windows.Forms.TextBox textBox_guest_number;
         private System.Windows.Forms.TextBox textBox_persons;
         private System.Windows.Forms.TextBox textBox_last_name;

@@ -11,6 +11,14 @@ namespace FinalProject.Models
 
     public class RoomManagement
     {
+        private int guestNo;
+        private string firstName;
+        private string lastName;
+        private string phone;
+        private int persons;
+        private DateTime checkInDate;
+        private DateTime checkOutDate;
+
         // RoomId will be the coding name, and it will be mapped to the PK _id of the table
         [BsonId, BsonElement("_id"), BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
         public string RoomId { get; set; }
@@ -50,7 +58,6 @@ namespace FinalProject.Models
             this.RoomStatus = roomStatus;
             this.RoomPrice = roomPrice;
         }
-
 
         public override string ToString()
         {
