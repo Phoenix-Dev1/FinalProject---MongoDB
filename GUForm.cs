@@ -70,7 +70,7 @@ namespace FinalProject
             string lastName = textBox_GU_Last_Name.Text;
             string phone = textBox_GU_Phone.Text;
             int persons = Convert.ToInt32(textBox_GU_Persons.Text);
-            int numberOfRooms = Convert.ToInt32(textBox_GU_number_of_rooms);
+            int numberOfRooms = Convert.ToInt32(textBox_GU_number_of_rooms.Text);
             string checkIn = dateTimePicker_GU_CheckIn.Value.ToString("dd-MM-yyyy");
             string checkOut = dateTimePicker_GU_CheckOut.Value.ToString("dd-MM-yyyy");
 
