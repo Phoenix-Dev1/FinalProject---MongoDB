@@ -98,7 +98,6 @@ namespace FinalProject.Models
             string str = "";
 
             str += "Guest's Unique ID Number: " + this.GuestNumber.ToString() +
-                "\nGuest Room Number: " + this.GuestRoomNumber.ToString() +
                 "\nGuest Full Name: " + this.FirstName + " " + this.LastName +
                 "\nGuest Phone Number: " + this.PhoneNumber +
                 "\nNumber of persons Booked in the room: " + this.Persons.ToString()+

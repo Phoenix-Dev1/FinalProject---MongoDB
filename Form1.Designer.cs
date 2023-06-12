@@ -63,6 +63,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btn_refresh = new System.Windows.Forms.Button();
             this.comboBox_Filter_Room_Floor = new System.Windows.Forms.ComboBox();
@@ -75,22 +79,18 @@
             this.btn_Filter_By_Floor = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_guests)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_rooms)).BeginInit();
-            this.tabPage2.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -398,6 +398,7 @@
             // textBox_Room_Price
             // 
             this.textBox_Room_Price.Location = new System.Drawing.Point(91, 139);
+            this.textBox_Room_Price.MaxLength = 5;
             this.textBox_Room_Price.Name = "textBox_Room_Price";
             this.textBox_Room_Price.Size = new System.Drawing.Size(229, 20);
             this.textBox_Room_Price.TabIndex = 9;
@@ -487,6 +488,44 @@
             this.label1.Size = new System.Drawing.Size(71, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Room No` :";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.groupBox4);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(973, 669);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Hotel Occupancy";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.button1);
+            this.groupBox4.Controls.Add(this.dataGridView1);
+            this.groupBox4.Location = new System.Drawing.Point(19, 15);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(949, 208);
+            this.groupBox4.TabIndex = 0;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Room Occupancy";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(370, 175);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(116, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Refresh";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 19);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(937, 150);
+            this.dataGridView1.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -632,44 +671,6 @@
             this.dataGridView.Size = new System.Drawing.Size(542, 347);
             this.dataGridView.TabIndex = 0;
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.groupBox4);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(973, 669);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Hotel Occupancy";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.button1);
-            this.groupBox4.Controls.Add(this.dataGridView1);
-            this.groupBox4.Location = new System.Drawing.Point(19, 15);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(949, 208);
-            this.groupBox4.TabIndex = 0;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Room Occupancy";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 19);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(937, 150);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(370, 175);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(116, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Refresh";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -688,13 +689,13 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_rooms)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
-            this.tabPage3.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
