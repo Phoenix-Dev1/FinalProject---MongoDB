@@ -134,13 +134,26 @@ namespace FinalProject
             // To Do - Stage2: Insert the data into the Collection(Into the MongoDB)
             try
             {
-                roomsManagementCollection.InsertOne(room);
-                MessageBox.Show("The Following product was inserted:\n" + room.ToString(),
-                    "Product was inserted",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-                // If the insert succeeded - refresh the screen with the new information
-                LoadRoomsUponScreen();
+                if (roomCheck(room.RoomNumber))
+                {
+                    roomsManagementCollection.InsertOne(room);
+                    MessageBox.Show("The Following Room was inserted:\n" + room.ToString(),
+                        "Room was inserted",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                    // If the insert succeeded - refresh the screen with the new information
+                    LoadRoomsUponScreen();
+                }
+                else
+                {
+                    MessageBox.Show("This Room already exists, please choose a diferent Room number or " +
+                        "a diferent floor\n", "siesta",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+                    comboBox_Room_No.SelectedItem = null;
+                    comboBox_Room_Floors.SelectedItem = null;
+                }
+
             }
 
             catch (Exception ex)
@@ -419,6 +432,18 @@ namespace FinalProject
             return true;
         }
 
+
+        //function checks if there is no room with the number that inserted
+        public bool roomCheck(int room)
+        {
+            var filter = Builders<RoomManagement>.Filter.Eq(r => r.RoomNumber, room);
+            var count = roomsManagementCollection.CountDocuments(filter);
+
+            if (count == 0)
+                return true;
+            return false;
+        }
+
         private void dataGridView_rooms_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (dataGridView_rooms.Columns[e.ColumnIndex].Name == "RoomPrice")
@@ -430,6 +455,12 @@ namespace FinalProject
                     e.FormattingApplied = true;
                 }
             }
+        }
+
+        // Create Order - One to Many
+        private void btn_createOrder_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

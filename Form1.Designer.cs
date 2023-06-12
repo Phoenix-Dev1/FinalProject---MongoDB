@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btn_createOrder = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
             this.textBox_number_of_rooms = new System.Windows.Forms.TextBox();
@@ -74,6 +75,10 @@
             this.btn_Filter_By_Floor = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -83,11 +88,15 @@
             this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
@@ -97,6 +106,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btn_createOrder);
             this.tabPage1.Controls.Add(this.groupBox3);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
@@ -106,6 +116,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Hotel Management";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btn_createOrder
+            // 
+            this.btn_createOrder.Location = new System.Drawing.Point(396, 629);
+            this.btn_createOrder.Name = "btn_createOrder";
+            this.btn_createOrder.Size = new System.Drawing.Size(120, 27);
+            this.btn_createOrder.TabIndex = 37;
+            this.btn_createOrder.Text = "Create Order";
+            this.btn_createOrder.UseVisualStyleBackColor = true;
+            this.btn_createOrder.Click += new System.EventHandler(this.btn_createOrder_Click);
             // 
             // groupBox3
             // 
@@ -310,7 +330,7 @@
             // 
             // btn_Refresh_Rooms
             // 
-            this.btn_Refresh_Rooms.Location = new System.Drawing.Point(252, 115);
+            this.btn_Refresh_Rooms.Location = new System.Drawing.Point(340, 112);
             this.btn_Refresh_Rooms.Name = "btn_Refresh_Rooms";
             this.btn_Refresh_Rooms.Size = new System.Drawing.Size(120, 27);
             this.btn_Refresh_Rooms.TabIndex = 13;
@@ -345,7 +365,7 @@
             "10"});
             this.comboBox_Room_No.Location = new System.Drawing.Point(91, 30);
             this.comboBox_Room_No.Name = "comboBox_Room_No";
-            this.comboBox_Room_No.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_Room_No.Size = new System.Drawing.Size(229, 21);
             this.comboBox_Room_No.TabIndex = 11;
             // 
             // comboBox_Room_Floors
@@ -362,12 +382,12 @@
             "7"});
             this.comboBox_Room_Floors.Location = new System.Drawing.Point(91, 57);
             this.comboBox_Room_Floors.Name = "comboBox_Room_Floors";
-            this.comboBox_Room_Floors.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_Room_Floors.Size = new System.Drawing.Size(229, 21);
             this.comboBox_Room_Floors.TabIndex = 11;
             // 
             // btn_Insert_Room
             // 
-            this.btn_Insert_Room.Location = new System.Drawing.Point(252, 78);
+            this.btn_Insert_Room.Location = new System.Drawing.Point(340, 78);
             this.btn_Insert_Room.Name = "btn_Insert_Room";
             this.btn_Insert_Room.Size = new System.Drawing.Size(120, 27);
             this.btn_Insert_Room.TabIndex = 10;
@@ -379,7 +399,7 @@
             // 
             this.textBox_Room_Price.Location = new System.Drawing.Point(91, 139);
             this.textBox_Room_Price.Name = "textBox_Room_Price";
-            this.textBox_Room_Price.Size = new System.Drawing.Size(121, 20);
+            this.textBox_Room_Price.Size = new System.Drawing.Size(229, 20);
             this.textBox_Room_Price.TabIndex = 9;
             this.textBox_Room_Price.UseWaitCursor = true;
             // 
@@ -396,7 +416,7 @@
             "6"});
             this.comboBox_Room_Status.Location = new System.Drawing.Point(91, 112);
             this.comboBox_Room_Status.Name = "comboBox_Room_Status";
-            this.comboBox_Room_Status.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_Room_Status.Size = new System.Drawing.Size(229, 21);
             this.comboBox_Room_Status.TabIndex = 8;
             // 
             // comboBox_Room_Type
@@ -415,7 +435,7 @@
             "9"});
             this.comboBox_Room_Type.Location = new System.Drawing.Point(91, 82);
             this.comboBox_Room_Type.Name = "comboBox_Room_Type";
-            this.comboBox_Room_Type.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_Room_Type.Size = new System.Drawing.Size(229, 21);
             this.comboBox_Room_Type.TabIndex = 7;
             // 
             // label5
@@ -612,6 +632,44 @@
             this.dataGridView.Size = new System.Drawing.Size(542, 347);
             this.dataGridView.TabIndex = 0;
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.groupBox4);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(973, 669);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Hotel Occupancy";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.button1);
+            this.groupBox4.Controls.Add(this.dataGridView1);
+            this.groupBox4.Location = new System.Drawing.Point(19, 15);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(949, 208);
+            this.groupBox4.TabIndex = 0;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Room Occupancy";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 19);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(937, 150);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(370, 175);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(116, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Refresh";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -634,6 +692,9 @@
             this.tabPage2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -686,6 +747,11 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBox_number_of_rooms;
         private System.Windows.Forms.ComboBox comboBox_Room_No;
+        private System.Windows.Forms.Button btn_createOrder;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 
