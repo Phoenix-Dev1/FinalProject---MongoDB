@@ -419,7 +419,17 @@ namespace FinalProject
             return true;
         }
 
-
-
+        private void dataGridView_rooms_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dataGridView_rooms.Columns[e.ColumnIndex].Name == "RoomPrice")
+            {
+                if (e.Value != null)
+                {
+                    double roomPrice = (double)e.Value;
+                    e.Value = roomPrice.ToString() + "$"; 
+                    e.FormattingApplied = true;
+                }
+            }
+        }
     }
 }

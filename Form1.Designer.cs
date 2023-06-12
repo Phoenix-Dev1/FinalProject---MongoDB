@@ -31,6 +31,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBox_number_of_rooms = new System.Windows.Forms.TextBox();
             this.btn_Refresh_Guests_Click = new System.Windows.Forms.Button();
             this.dateTimePicker_check_out = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker_check_in = new System.Windows.Forms.DateTimePicker();
@@ -49,6 +51,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn_Refresh_Rooms = new System.Windows.Forms.Button();
             this.dataGridView_rooms = new System.Windows.Forms.DataGridView();
+            this.comboBox_Room_No = new System.Windows.Forms.ComboBox();
             this.comboBox_Room_Floors = new System.Windows.Forms.ComboBox();
             this.btn_Insert_Room = new System.Windows.Forms.Button();
             this.textBox_Room_Price = new System.Windows.Forms.TextBox();
@@ -71,9 +74,6 @@
             this.btn_Filter_By_Floor = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox_number_of_rooms = new System.Windows.Forms.TextBox();
-            this.comboBox_Room_No = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -132,6 +132,24 @@
             this.groupBox3.TabIndex = 13;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Guests";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(6, 134);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(49, 13);
+            this.label10.TabIndex = 35;
+            this.label10.Text = "Rooms:";
+            // 
+            // textBox_number_of_rooms
+            // 
+            this.textBox_number_of_rooms.Location = new System.Drawing.Point(97, 134);
+            this.textBox_number_of_rooms.MaxLength = 2;
+            this.textBox_number_of_rooms.Name = "textBox_number_of_rooms";
+            this.textBox_number_of_rooms.Size = new System.Drawing.Size(121, 20);
+            this.textBox_number_of_rooms.TabIndex = 36;
             // 
             // btn_Refresh_Guests_Click
             // 
@@ -308,6 +326,27 @@
             this.dataGridView_rooms.Size = new System.Drawing.Size(846, 125);
             this.dataGridView_rooms.TabIndex = 12;
             this.dataGridView_rooms.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_rooms_CellDoubleClick);
+            this.dataGridView_rooms.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView_rooms_CellFormatting);
+            // 
+            // comboBox_Room_No
+            // 
+            this.comboBox_Room_No.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_Room_No.FormattingEnabled = true;
+            this.comboBox_Room_No.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.comboBox_Room_No.Location = new System.Drawing.Point(91, 30);
+            this.comboBox_Room_No.Name = "comboBox_Room_No";
+            this.comboBox_Room_No.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_Room_No.TabIndex = 11;
             // 
             // comboBox_Room_Floors
             // 
@@ -342,6 +381,7 @@
             this.textBox_Room_Price.Name = "textBox_Room_Price";
             this.textBox_Room_Price.Size = new System.Drawing.Size(121, 20);
             this.textBox_Room_Price.TabIndex = 9;
+            this.textBox_Room_Price.UseWaitCursor = true;
             // 
             // comboBox_Room_Status
             // 
@@ -443,7 +483,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(884, 669);
+            this.tabPage2.Size = new System.Drawing.Size(973, 669);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Room Management";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -571,44 +611,6 @@
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.Size = new System.Drawing.Size(542, 347);
             this.dataGridView.TabIndex = 0;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(6, 134);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(49, 13);
-            this.label10.TabIndex = 35;
-            this.label10.Text = "Rooms:";
-            // 
-            // textBox_number_of_rooms
-            // 
-            this.textBox_number_of_rooms.Location = new System.Drawing.Point(97, 134);
-            this.textBox_number_of_rooms.MaxLength = 2;
-            this.textBox_number_of_rooms.Name = "textBox_number_of_rooms";
-            this.textBox_number_of_rooms.Size = new System.Drawing.Size(121, 20);
-            this.textBox_number_of_rooms.TabIndex = 36;
-            // 
-            // comboBox_Room_No
-            // 
-            this.comboBox_Room_No.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_Room_No.FormattingEnabled = true;
-            this.comboBox_Room_No.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"});
-            this.comboBox_Room_No.Location = new System.Drawing.Point(91, 30);
-            this.comboBox_Room_No.Name = "comboBox_Room_No";
-            this.comboBox_Room_No.Size = new System.Drawing.Size(121, 21);
-            this.comboBox_Room_No.TabIndex = 11;
             // 
             // Form1
             // 
