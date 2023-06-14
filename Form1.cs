@@ -20,6 +20,7 @@ namespace FinalProject
         string connectionString = ConfigurationManager.ConnectionStrings["MyMongo"].ConnectionString;
         private IMongoCollection<RoomManagement> roomsManagementCollection;
         private IMongoCollection<Guests> GuestsCollection;
+        private IMongoCollection<Orders> OrdersCollection;
 
 
         public Form1()
@@ -49,11 +50,15 @@ namespace FinalProject
                 // the collection is called "Rooms" - in the first time it will create it
                 roomsManagementCollection = db.GetCollection<RoomManagement>("Rooms");
                 GuestsCollection = db.GetCollection<Guests>("Guests");
+                OrdersCollection = db.GetCollection<Orders>("Orders");
 
-
-                // When the form is loaded - we would like to get the list of all the rooms
+                // When the form is loaded - we would like to get the list of all the tables
+                // Rooms
                 LoadRoomsUponScreen();
+                // Guests
                 LoadGuestsUponScreen();
+                // Orders
+                // LoadOrdersUponScreen();
 
             }
             catch (Exception ex)
@@ -81,14 +86,33 @@ namespace FinalProject
                 })
                 .ToList();
 
+            // Add the checkbox column only if it doesn't already exist
+            if (!dataGridView_rooms.Columns.Contains("checkboxColumn"))
+            {
+                var checkboxColumn = new DataGridViewCheckBoxColumn
+                {
+                    HeaderText = "Select",
+                    Name = "checkboxColumn",
+                    DataPropertyName = "IsSelected"
+                };
+                dataGridView_rooms.Columns.Insert(0, checkboxColumn);
+            }
+
             // Clear the text box values
             comboBox_Filter_Room_Floor.SelectedItem = null;
             comboBox_Filter_By_Type.SelectedItem = null;
             comboBox_Filter_By_Status.SelectedItem = null;
             textBox_Filert_By_Price.Clear();
 
+            // Enable checkbox editing
+            dataGridView_rooms.ReadOnly = false;
+            dataGridView_rooms.Columns["checkboxColumn"].ReadOnly = false;
+
+
             dataGridView_rooms.DataSource = results;
         }
+
+
 
         // Load all the guests upon the user's screen
         private void LoadGuestsUponScreen()
@@ -108,6 +132,18 @@ namespace FinalProject
                 })
                 .ToList();
 
+            // Add the checkbox column only if it doesn't already exist
+            if (!dataGridView_guests.Columns.Contains("checkboxColumn"))
+            {
+                var checkboxColumn = new DataGridViewCheckBoxColumn
+                {
+                    HeaderText = "Select",
+                    Name = "checkboxColumn",
+                    DataPropertyName = "IsSelected"
+            };
+                dataGridView_guests.Columns.Insert(0, checkboxColumn);
+            }
+
             // Clear the text box values
             textBox_first_name.Clear();
             textBox_last_name.Clear();
@@ -115,6 +151,11 @@ namespace FinalProject
             textBox_persons.Clear();
             dateTimePicker_check_in.ResetText();
             dateTimePicker_check_out.ResetText();
+
+            // Enable checkbox editing
+            dataGridView_rooms.ReadOnly = false;
+            dataGridView_rooms.Columns["checkboxColumn"].ReadOnly = false;
+
 
             dataGridView_guests.DataSource = results;
         }
@@ -380,11 +421,11 @@ namespace FinalProject
 
 
             //udForm.textBox_UD_Mongo_Id.Text = dataGridView.CurrentRow.Cells[0].Value.ToString();
-            udForm.textBox_UD_Room_No.Text = dataGridView_rooms.CurrentRow.Cells[1].Value.ToString();
-            udForm.textBox_UD_Room_Floor.Text = dataGridView_rooms.CurrentRow.Cells[0].Value.ToString();
-            udForm.comboBox_UD_Room_Type.SelectedItem = dataGridView_rooms.CurrentRow.Cells[2].Value.ToString();
-            udForm.comboBox_UD_Room_Status.SelectedItem = dataGridView_rooms.CurrentRow.Cells[3].Value.ToString();
-            udForm.textBox_UD_Room_Price.Text = dataGridView_rooms.CurrentRow.Cells[4].Value.ToString();
+            udForm.textBox_UD_Room_No.Text = dataGridView_rooms.CurrentRow.Cells[2].Value.ToString();
+            udForm.textBox_UD_Room_Floor.Text = dataGridView_rooms.CurrentRow.Cells[1].Value.ToString();
+            udForm.comboBox_UD_Room_Type.SelectedItem = dataGridView_rooms.CurrentRow.Cells[3].Value.ToString();
+            udForm.comboBox_UD_Room_Status.SelectedItem = dataGridView_rooms.CurrentRow.Cells[4].Value.ToString();
+            udForm.textBox_UD_Room_Price.Text = dataGridView_rooms.CurrentRow.Cells[5].Value.ToString();
 
             // Show the dialog after the fields have been filled
             udForm.ShowDialog(this);
@@ -460,6 +501,7 @@ namespace FinalProject
         // Create Order - One to Many
         private void btn_createOrder_Click(object sender, EventArgs e)
         {
+           
 
         }
     }

@@ -41,6 +41,9 @@ namespace FinalProject.Models
         [BsonElement("price"), BsonRepresentation(MongoDB.Bson.BsonType.Double)]
         public double RoomPrice { get; set; }
 
+        // CheckBox
+        public bool isSelected { get; set; }
+
 
         //CTOR
         public RoomManagement(int roomFloor, int roomNumber, int roomType, int roomStatus, double roomPrice)

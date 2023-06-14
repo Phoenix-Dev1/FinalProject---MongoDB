@@ -13,12 +13,12 @@ namespace FinalProject.Models
     {
         // RoomId will be the coding name, and it will be mapped to the PK _id of the table
         [BsonId, BsonElement("_id"), BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
-        public string GuestId { get; set; }
+        public string Id { get; set; }
 
 
         //represent the Guests's number
-        [BsonElement("guest_number"), BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
-        public int GuestNumber { get; set; }
+        [BsonElement("guest_id"), BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
+        public int GuestId { get; set; }
 
 
         //represent the Guests's first name
@@ -38,17 +38,11 @@ namespace FinalProject.Models
         [BsonElement("guest_room_type"), BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
         public int GuestRoomType { get; set; }
 
-        //represent the Guests's room number
-        [BsonElement("guest_room_number"), BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
-        public int GuestRoomNumber { get; set; }
-
+        /*
         //represent how many guests are staying in the room
         [BsonElement("persons"), BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
         public int Persons { get; set; }
-
-        //represent how many guests are staying in the room
-        [BsonElement("number_of_rooms"), BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
-        public int NumberOfRooms { get; set; }
+        */
 
         //represent the Guests's check in date
         [BsonElement("check_in_date"), BsonRepresentation(MongoDB.Bson.BsonType.String)]
@@ -80,14 +74,13 @@ namespace FinalProject.Models
         */
 
         // User screen constructor
-        public Guests(int guestNumber, string firstName, string lastName, string phoneNumber,int numberOfRooms, int persons, string checkInDate, string checkOutDate) {
+        public Guests(int guestId, string firstName, string lastName, string phoneNumber,string checkInDate, string checkOutDate) {
 
-            this.GuestNumber = guestNumber;
+            this.GuestId = guestId;
             this.FirstName = firstName;
             this.LastName = lastName;
             this.PhoneNumber = phoneNumber;
-            this.Persons = persons;
-            this.NumberOfRooms = numberOfRooms;
+           // this.Persons = persons;
             this.CheckInDate = checkInDate;
             this.CheckOutDate = checkOutDate;
         }
@@ -97,10 +90,9 @@ namespace FinalProject.Models
         {
             string str = "";
 
-            str += "Guest's Unique ID Number: " + this.GuestNumber.ToString() +
+            str += "Guest's Unique ID Number: " + this.GuestId.ToString() +
                 "\nGuest Full Name: " + this.FirstName + " " + this.LastName +
                 "\nGuest Phone Number: " + this.PhoneNumber +
-                "\nNumber of persons Booked in the room: " + this.Persons.ToString()+
                 "\nCheck-in Date: " + this.CheckInDate.ToString() + " Check-out Date: " + this.CheckOutDate.ToString();
             return str;
         }
