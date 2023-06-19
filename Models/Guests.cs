@@ -17,8 +17,8 @@ namespace FinalProject.Models
 
 
         //represent the Guests's number
-        [BsonElement("guest_id"), BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
-        public int GuestId { get; set; }
+        [BsonElement("guest_id"), BsonRepresentation(MongoDB.Bson.BsonType.String)]
+        public string GuestId { get; set; }
 
 
         //represent the Guests's first name
@@ -74,7 +74,7 @@ namespace FinalProject.Models
         */
 
         // User screen constructor
-        public Guests(int guestId, string firstName, string lastName, string phoneNumber,string checkInDate, string checkOutDate) {
+        public Guests(string guestId, string firstName, string lastName, string phoneNumber,string checkInDate, string checkOutDate) {
 
             this.GuestId = guestId;
             this.FirstName = firstName;

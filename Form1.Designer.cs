@@ -32,8 +32,8 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btn_createOrder = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox_number_of_rooms = new System.Windows.Forms.TextBox();
+            this.textBox_Guest_id = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.btn_Refresh_Guests_Click = new System.Windows.Forms.Button();
             this.dateTimePicker_check_out = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker_check_in = new System.Windows.Forms.DateTimePicker();
@@ -46,9 +46,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.btn_insert_guests_table = new System.Windows.Forms.Button();
-            this.textBox_persons = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn_Refresh_Rooms = new System.Windows.Forms.Button();
             this.dataGridView_rooms = new System.Windows.Forms.DataGridView();
@@ -129,8 +127,8 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Controls.Add(this.textBox_number_of_rooms);
+            this.groupBox3.Controls.Add(this.textBox_Guest_id);
+            this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.btn_Refresh_Guests_Click);
             this.groupBox3.Controls.Add(this.dateTimePicker_check_out);
             this.groupBox3.Controls.Add(this.dateTimePicker_check_in);
@@ -143,9 +141,7 @@
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.btn_insert_guests_table);
-            this.groupBox3.Controls.Add(this.textBox_persons);
             this.groupBox3.Location = new System.Drawing.Point(56, 324);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(864, 299);
@@ -153,23 +149,23 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Guests";
             // 
-            // label10
+            // textBox_Guest_id
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(6, 134);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(49, 13);
-            this.label10.TabIndex = 35;
-            this.label10.Text = "Rooms:";
+            this.textBox_Guest_id.Location = new System.Drawing.Point(97, 20);
+            this.textBox_Guest_id.MaxLength = 9;
+            this.textBox_Guest_id.Name = "textBox_Guest_id";
+            this.textBox_Guest_id.Size = new System.Drawing.Size(120, 20);
+            this.textBox_Guest_id.TabIndex = 36;
             // 
-            // textBox_number_of_rooms
+            // label6
             // 
-            this.textBox_number_of_rooms.Location = new System.Drawing.Point(97, 134);
-            this.textBox_number_of_rooms.MaxLength = 2;
-            this.textBox_number_of_rooms.Name = "textBox_number_of_rooms";
-            this.textBox_number_of_rooms.Size = new System.Drawing.Size(121, 20);
-            this.textBox_number_of_rooms.TabIndex = 36;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            this.label6.Location = new System.Drawing.Point(6, 25);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(61, 13);
+            this.label6.TabIndex = 35;
+            this.label6.Text = "Guest ID:";
             // 
             // btn_Refresh_Guests_Click
             // 
@@ -197,7 +193,7 @@
             // 
             // textBox_phone
             // 
-            this.textBox_phone.Location = new System.Drawing.Point(97, 77);
+            this.textBox_phone.Location = new System.Drawing.Point(97, 104);
             this.textBox_phone.MaxLength = 10;
             this.textBox_phone.Name = "textBox_phone";
             this.textBox_phone.Size = new System.Drawing.Size(120, 20);
@@ -205,7 +201,7 @@
             // 
             // textBox_last_name
             // 
-            this.textBox_last_name.Location = new System.Drawing.Point(97, 51);
+            this.textBox_last_name.Location = new System.Drawing.Point(97, 78);
             this.textBox_last_name.MaxLength = 20;
             this.textBox_last_name.Name = "textBox_last_name";
             this.textBox_last_name.Size = new System.Drawing.Size(121, 20);
@@ -213,7 +209,7 @@
             // 
             // textBox_first_name
             // 
-            this.textBox_first_name.Location = new System.Drawing.Point(97, 22);
+            this.textBox_first_name.Location = new System.Drawing.Point(97, 49);
             this.textBox_first_name.MaxLength = 20;
             this.textBox_first_name.Name = "textBox_first_name";
             this.textBox_first_name.Size = new System.Drawing.Size(120, 20);
@@ -242,7 +238,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            this.label9.Location = new System.Drawing.Point(6, 27);
+            this.label9.Location = new System.Drawing.Point(6, 54);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(75, 13);
             this.label9.TabIndex = 14;
@@ -262,7 +258,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            this.label8.Location = new System.Drawing.Point(6, 54);
+            this.label8.Location = new System.Drawing.Point(6, 81);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(75, 13);
             this.label8.TabIndex = 15;
@@ -272,21 +268,11 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(6, 81);
+            this.label7.Location = new System.Drawing.Point(6, 108);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(47, 13);
             this.label7.TabIndex = 16;
             this.label7.Text = "Phone:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(6, 107);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 13);
-            this.label6.TabIndex = 17;
-            this.label6.Text = "Persons:";
             // 
             // btn_insert_guests_table
             // 
@@ -297,14 +283,6 @@
             this.btn_insert_guests_table.Text = "Insert";
             this.btn_insert_guests_table.UseVisualStyleBackColor = true;
             this.btn_insert_guests_table.Click += new System.EventHandler(this.btn_insert_guests_table_Click);
-            // 
-            // textBox_persons
-            // 
-            this.textBox_persons.Location = new System.Drawing.Point(97, 105);
-            this.textBox_persons.MaxLength = 3;
-            this.textBox_persons.Name = "textBox_persons";
-            this.textBox_persons.Size = new System.Drawing.Size(121, 20);
-            this.textBox_persons.TabIndex = 21;
             // 
             // groupBox1
             // 
@@ -735,9 +713,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btn_insert_guests_table;
-        private System.Windows.Forms.TextBox textBox_persons;
         private System.Windows.Forms.TextBox textBox_last_name;
         private System.Windows.Forms.TextBox textBox_first_name;
         private System.Windows.Forms.TextBox textBox_phone;
@@ -745,14 +721,14 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker_check_in;
         private System.Windows.Forms.Button btn_Refresh_Guests_Click;
         private System.Windows.Forms.Button btn_Refresh_Rooms;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox_number_of_rooms;
         private System.Windows.Forms.ComboBox comboBox_Room_No;
         private System.Windows.Forms.Button btn_createOrder;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox textBox_Guest_id;
+        private System.Windows.Forms.Label label6;
     }
 }
 

@@ -121,12 +121,10 @@ namespace FinalProject
             var results = GuestsCollection.Find(_ => true)
                 .Project(g => new
                 {
-                    g.GuestNumber,
+                    g.GuestId,
                     g.LastName,
                     g.FirstName,
                     g.PhoneNumber,
-                    g.Persons,
-                    g.NumberOfRooms,
                     g.CheckInDate,
                     g.CheckOutDate
                 })
@@ -145,10 +143,10 @@ namespace FinalProject
             }
 
             // Clear the text box values
+            textBox_Guest_id.Clear();
             textBox_first_name.Clear();
             textBox_last_name.Clear();
             textBox_phone.Clear();
-            textBox_persons.Clear();
             dateTimePicker_check_in.ResetText();
             dateTimePicker_check_out.ResetText();
 
@@ -221,7 +219,7 @@ namespace FinalProject
             // To Do - Stage2: Insert the data into the Collection(Into the MongoDB)
             try
             {
-                if (phoneNumberCheck(guest.PhoneNumber) && (CheckFirstAndLastNameValidity(guest.FirstName, guest.LastName)))
+                if (phoneNumberCheck(guest.PhoneNumber) && (CheckFirstAndLastNameValidity(guest.FirstName, guest.LastName))&&checkId(guest.GuestId))
                 {
                     GuestsCollection.InsertOne(guest);
                     MessageBox.Show("The Following Guest was inserted:\n" + guest.ToString(),
@@ -234,8 +232,6 @@ namespace FinalProject
                     textBox_first_name.Clear();
                     textBox_last_name.Clear();
                     textBox_phone.Clear();
-                    textBox_persons.Clear();
-                    textBox_number_of_rooms.Clear();
                 }
                 else
                 {
@@ -293,18 +289,15 @@ namespace FinalProject
         private Guests GetGuestDetailsFromScreen()
         {
             // Get the maximum guest number from Guests collection
-            int maxGuestNumber = GuestsCollection.Find(_ => true).SortByDescending(g => g.GuestNumber).Limit(1).FirstOrDefault()?.GuestNumber ?? 0;
-
-            int guestNumber = maxGuestNumber + 1;
+            //int maxGuestNumber = GuestsCollection.Find(_ => true).SortByDescending(g => g.GuestId).Limit(1).FirstOrDefault()?.GuestId ?? 0;
+            string guestId = textBox_Guest_id.Text;
             string firstName = textBox_first_name.Text;
             string lastName = textBox_last_name.Text;
             string phone = textBox_phone.Text;
-            int persons = Convert.ToInt32(textBox_persons.Text);
-            int numberOfRooms = Convert.ToInt32(textBox_number_of_rooms.Text);
             string checkInDate = dateTimePicker_check_in.Value.ToString("dd-MM-yyyy");
             string checkOutDate = dateTimePicker_check_out.Value.ToString("dd-MM-yyyy");
 
-            Guests guest = new Guests(guestNumber, firstName, lastName, phone, numberOfRooms, persons, checkInDate, checkOutDate);
+            Guests guest = new Guests(guestId, firstName, lastName, phone, checkInDate, checkOutDate);
 
             return guest;
         }
@@ -397,14 +390,12 @@ namespace FinalProject
             // Gets a table
             GUForm guForm = new GUForm(GuestsCollection); // guestsCollection
 
-            guForm.textBox_GU_Guest_No.Text = dataGridView_guests.CurrentRow.Cells[0].Value.ToString();
-            guForm.textBox_GU_First_Name.Text = dataGridView_guests.CurrentRow.Cells[1].Value.ToString();
-            guForm.textBox_GU_Last_Name.Text = dataGridView_guests.CurrentRow.Cells[2].Value.ToString();
-            guForm.textBox_GU_Phone.Text = dataGridView_guests.CurrentRow.Cells[3].Value.ToString();
-            guForm.textBox_GU_Persons.Text = dataGridView_guests.CurrentRow.Cells[4].Value.ToString();
-            guForm.textBox_GU_number_of_rooms.Text = dataGridView_guests.CurrentRow.Cells[5].Value.ToString();
-            guForm.dateTimePicker_GU_CheckIn.Text = dataGridView_guests.CurrentRow.Cells[6].Value.ToString();
-            guForm.dateTimePicker_GU_CheckOut.Text = dataGridView_guests.CurrentRow.Cells[7].Value.ToString();
+            guForm.textBox_GU_Guest_Id.Text = dataGridView_guests.CurrentRow.Cells[1].Value.ToString();
+            guForm.textBox_GU_First_Name.Text = dataGridView_guests.CurrentRow.Cells[2].Value.ToString();
+            guForm.textBox_GU_Last_Name.Text = dataGridView_guests.CurrentRow.Cells[3].Value.ToString();
+            guForm.textBox_GU_Phone.Text = dataGridView_guests.CurrentRow.Cells[4].Value.ToString();
+            guForm.dateTimePicker_GU_CheckIn.Text = dataGridView_guests.CurrentRow.Cells[5].Value.ToString();
+            guForm.dateTimePicker_GU_CheckOut.Text = dataGridView_guests.CurrentRow.Cells[6].Value.ToString();
 
             // Show the dialog after the fields have been filled
             guForm.ShowDialog(this);
@@ -496,6 +487,14 @@ namespace FinalProject
                     e.FormattingApplied = true;
                 }
             }
+        }
+
+        public bool checkId(string guestId)
+        {
+            var filter = Builders<Guests>.Filter.Eq(g => g.GuestId, guestId);
+            if (guestId.Length == 9 || filter == null)
+                return false;
+            return true;
         }
 
         // Create Order - One to Many
